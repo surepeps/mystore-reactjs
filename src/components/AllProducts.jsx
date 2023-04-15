@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SingleProduct from './products/SingleProduct'
 import Sidebar from './Sidebar'
 
 function AllProducts() {
-  let Product = [];
+  const [allProducts, setAllProducts] = useState([]);
 
-  for(let i = 1; i <= 21; i++){
-    Product.push(<SingleProduct />)
-  }
-  
+  fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json => {
+              setAllProducts(json);
+            });
+   
   return (
     <div className='main-container'>
         <Sidebar />
 
         <div className="allP">
-          {Product}
+          {
+            allProducts.map((product) => <SingleProduct productData={product} key={product.id} />)
+          }
         </div>
     </div>
   )

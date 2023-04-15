@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SingleProduct() {
+function SingleProduct({productData}) {
   return (
     <div className='s-prod'>
         <div className="badge">
@@ -8,12 +8,12 @@ function SingleProduct() {
         </div>
 
         <div className="prod-img">
-          <img src="" alt="" />
+          <img src={productData.image} alt="" />
         </div>
 
         <div className="price-title">
-          <h3 className="title">Garnier Pure Active Miceller</h3>
-          <p className="price">$1,999.99</p>
+          <h3 className="title">{productData.title}</h3>
+          <p className="price">${productData.price}</p>
         </div>
 
         <div className="all-btns">
